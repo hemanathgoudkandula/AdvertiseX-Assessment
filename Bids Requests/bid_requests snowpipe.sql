@@ -7,7 +7,8 @@ TRIM_SPACE = TRUE
 -- staging table creation
 create or replace stage ADVERTISEX.STAGING.BID_REQUESTS
 file_format = bids_request_format
-url ='s3://advertisex/bid_requests/';
+url ='s3://advertisex/bid_requests/'
+STORAGE_INTEGRATION = advertisex_s3;
 
 -- select columns query
 select
