@@ -7,7 +7,8 @@ SKIP_HEADER =1;
 -- staging table creation
 create or replace stage ADVERTISEX.STAGING.CLICKS_CONVERSIONS
 file_format = clicks_conversions_format
-url ='s3://advertisex/clicks_conversions/';
+url ='s3://advertisex/clicks_conversions/'
+STORAGE_INTEGRATION = advertisex_s3;
 
 -- select columns query
 select $2::string as user_id,$3::string as ad_campaign_id,$1::datetime as event_timestamp,$4::string as conversion_type from  @ADVERTISEX.STAGING.CLICKS_CONVERSIONS;
