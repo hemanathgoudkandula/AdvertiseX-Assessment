@@ -7,7 +7,8 @@ STRIP_OUTER_ARRAY =TRUE
 -- staging table creation
 create or replace stage ADVERTISEX.STAGING.AD_IMPRESSIONS
 file_format = ad_impressions_format
-url ='s3://advertisex/ad_impressions/';
+url ='s3://advertisex/ad_impressions/'
+STORAGE_INTEGRATION = advertisex_s3;
 
 -- select columns query
 select $1:user_id::string as user_id, $1:ad_creative_id::string as ad_creative_id,$1:timestamp::datetime as timestamp ,$1:website::string as website from @ADVERTISEX.STAGING.AD_IMPRESSIONS;
